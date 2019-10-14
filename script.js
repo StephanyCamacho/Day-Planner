@@ -39,6 +39,19 @@ $( document ).ready(function() {
         hours = hours ? hours : 12;
         return hours + ampm;
     }
+
+    function updateColors(){
+        var currentTime = new Date().getHours();
+         if ((currentTime + 11) % 12 + 1){
+            $( "textarea" ).addClass( "future");
+         } else {
+            $( "textarea" ).addClass( "present");
+         }
+    }
+
+    setInterval(function() {
+        updateColors();  
+     }, 1000);
     
     var saveBtn = $('.saveBtn');
     saveBtn.on('click', function(){
